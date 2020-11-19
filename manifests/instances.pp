@@ -12,19 +12,19 @@ class accounts::instances(
 ) {
 
   if empty($groups) {
-    $groups_data = hiera_hash('accounts::groups', {})
+    $groups_data = lookup( { 'name' => 'accounts::groups' } )
   }
   if empty($ssh_keys) {
-    $ssh_keys_data = hiera_hash('accounts::ssh_keys', {})
+    $ssh_keys_data = lookup( { 'name' => 'accounts::ssh_keys' } )
   }
   if empty($users) {
-    $users_data = hiera_hash('accounts::users', {})
+    $users_data = lookup( { 'name' => 'accounts::users' } )
   }
   if empty($usergroups) {
-    $usergroups_data = hiera_hash('accounts::usergroups', {})
+    $usergroups_data = lookup( { 'name' => 'accounts::usergroups' } )
   }
   if empty($accounts) {
-    $accounts_data = hiera_hash('accounts::accounts', {})
+    $accounts_data = lookup( { 'name' => 'accounts::accounts' } )
   }
   class { 'accounts':
     groups                   => $groups_data,
